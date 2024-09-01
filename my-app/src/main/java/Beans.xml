@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="empbean" class="com.jatin.my_app.model.Employee">
+		<property name="id" value="101"></property>
+		<property name="name" value="Jatin"></property>
+	</bean>
+	<bean id="emp2" class="com.jatin.my_app.model.Employee">
+		<property name="id" value="102"></property>
+		<property name="name" value="Jeo fjow"></property>
+	</bean>
+
+	<!-- Constructor based dependency injection -->
+	<bean id="address1" class="com.jatin.my_app.model.Address">
+		<constructor-arg value="Bengaluru" />
+		<constructor-arg value="KA" />
+		<constructor-arg value="India" />
+	</bean>
+
+	<bean id="skill1" class="com.jatin.my_app.model.Skill">
+		<constructor-arg value="2" type="int"/>
+		<constructor-arg value="Java" />
+	</bean>
+
+	<bean id="skill2" class="com.jatin.my_app.model.Skill">
+		<constructor-arg value="1" type="int"/>
+		<constructor-arg value="Node.js" />
+	</bean>
+
+	<bean id="skill3" class="com.jatin.my_app.model.Skill">
+		<constructor-arg value="2" type="int"/>
+		<constructor-arg value="Angular" />
+	</bean>
+
+
+	<bean id="emp3" class="com.jatin.my_app.model.Employee">
+		<constructor-arg value="102" type="int" />
+		<constructor-arg value="Divya" />
+	</bean>
+
+	<bean id="emp4" class="com.jatin.my_app.model.Employee">
+		<constructor-arg value="103" type="int" />
+		<constructor-arg value="Patrice Lumumba" />
+		<constructor-arg>
+			<ref bean="address1" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="emp5" class="com.jatin.my_app.model.Employee">
+		<constructor-arg value="123" type="int" />
+		<constructor-arg value="Thomas Sankara" />
+		<constructor-arg>
+			<ref bean="address1" />
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="skill1" />
+				<ref bean="skill2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>
